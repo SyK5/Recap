@@ -4,8 +4,6 @@
 
 ## versuche folgende struktur einzuhalten :
 
-my-app/
-
 ```
 my-fullstack-project/
 ├── client/                         # Frontend (React)

@@ -4,8 +4,9 @@
   "version": "0.0.0",
   "type": "module",
   "scripts": {
+    "start": "craco start",
     "dev": "vite",
-    "build": "vite build",
+    "build": "craco build",
     "lint": "eslint .",
     "preview": "vite preview"
   },
