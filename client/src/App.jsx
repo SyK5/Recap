@@ -1,6 +1,8 @@
 import { useState } from 'react'
 import { Routes, Route } from 'react-router'
 
+import './styles/app.css'
+
 import Home from './pages/Home'
 import Layout from './components/Layout'
 
