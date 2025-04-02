@@ -1,6 +1,12 @@
 import React from "react";
+import { NavLink } from "react-router";
 
-const txtStyle = "text-amber-50 font-extrabold text-2xl";
+import { IoPersonCircle } from "react-icons/io5";
+import { FaSearch } from "react-icons/fa";
+import { IoHomeSharp } from "react-icons/io5";
+import { MdHelp } from "react-icons/md";
+
+const txtStyle = "text-amber-50 font-extrabold text-3xl";
 
 const Topbar = () => {
   return (
@@ -10,7 +16,7 @@ const Topbar = () => {
     fixed
     top-0
     p-3
-    bg-darkMain"
+    bg-gray-800"
     >
       <ul
         className="
@@ -18,10 +24,26 @@ const Topbar = () => {
     gap-20
     justify-center"
       >
-        <li className={txtStyle}>A</li>
-        <li className={txtStyle}>B</li>
-        <li className={txtStyle}>C</li>
-        <li className={txtStyle}>D</li>
+        <li className={txtStyle}>
+          <NavLink to='/'>
+            <IoHomeSharp />
+          </NavLink>
+        </li>
+        <li className={txtStyle}>
+          <NavLink to='/search'>
+            <FaSearch />
+          </NavLink>
+        </li>
+        <li className={`${txtStyle} text-4xl relative bottom-0.5`}>
+          <NavLink to='/profile'>
+            <IoPersonCircle />
+          </NavLink>
+        </li>
+        <li className={`${txtStyle} text-4xl relative bottom-0.5`}>
+          <NavLink to='/help'>
+            <MdHelp />
+          </NavLink>
+        </li>
       </ul>
     </div>
   );
