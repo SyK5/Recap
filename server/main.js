@@ -1,29 +1,26 @@
 import express from 'express';
+import userRoute from './routes/UserRoutes.js';
 import dotenv from 'dotenv';
-import cors from 'cors';
+import connectDB from './config/db.js';
 
 
+
+//privat data acces
 dotenv.config();
 
-await connectDB();
-
-
-
+// variable & start
 const app = express();
+await connectDB();
+const PORT = process.env.PORT;
 
-
+// compile json
 app.use(express.json());
-const PORT = process.env.PORT || 5001;
 
-app.use(
-  cors({
-    origin: process.env.CLIENT_URL, 
-    credentials: true,              
-  })
-);
+// routes
+app.use('/api/users', userRoute);
 
-app.use(routeNotFound);
 
+// running
 app.listen(PORT, () => {
   console.log(`Server running on port : ${PORT}`);
 });
