@@ -7,13 +7,13 @@ export const createSendToken = (res, status, user) => {
   const isProduction = NODE_ENV === "production";
 
   const cookieOptions = {
-    expires: new Date(Date.now() + COOKIE_EXP * 24 * 60 * 60 * 1000),
+    expires: new Date(Date.now() + Number(COOKIE_EXP) * 24 * 60 * 60 * 1000),
     httpOnly: true,
     secure: true,
     sameSite: isProduction ? "None" : "Lax",
   };
 
-  res.cookie("jwtToken", jwtToken, cookieOptions);
+  res.cookie("Token", Token, cookieOptions);
   user.password = undefined;
 
   res.status(status).json({ success: true, status, user });
