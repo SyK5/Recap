@@ -6,7 +6,7 @@ const button = 'bg-blue-500 hover:bg-blue-700  text-white font-bold py-2 px-4 ro
 const Profile = () => {
   return (
     <div className='flex gap-5'>
-    <h2 className={button}><NavLink to='/profile/register'>Register</NavLink></h2>
+    <NavLink to='/profile/register'><h2 className={button}>Register</h2></NavLink>
     <h2 className={button}>Login</h2>
 
     </div>
