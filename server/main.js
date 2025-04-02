@@ -1,9 +1,7 @@
-import express from 'express';
-import userRoute from './routes/UserRoutes.js';
-import dotenv from 'dotenv';
-import connectDB from './config/db.js';
-
-
+import express from "express";
+import userRoute from "./routes/UserRoutes.js";
+import dotenv from "dotenv";
+import connectDB from "./config/db.js";
 
 //privat data acces
 dotenv.config();
@@ -17,8 +15,7 @@ const PORT = process.env.PORT;
 app.use(express.json());
 
 // routes
-app.use('/api/users', userRoute);
-
+app.use("/api/users", userRoute);
 
 // running
 app.listen(PORT, () => {
