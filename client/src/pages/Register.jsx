@@ -1,6 +1,8 @@
-import React, { useContext, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { button } from "./Profile";
 import { MainContext } from "../../hooks/context/mainContext";
+import { useNavigate } from "react-router";
+import checkAuthStatus from "../helpers/AuthHelper";
 
 const label = "text-[1.2rem]";
 const input =
@@ -10,12 +12,14 @@ const divfeld = "flex justify-between";
 const Register = () => {
   const [userState, userDispatch] = useContext(MainContext);
   const [userData, setUserData] = useState({
-    firstName: String,
-    lastName: String,
-    userName: String,
-    email: String,
-    password: String,
+    firstName: "",
+    lastName: "",
+    userName: "",
+    email: "",
+    password: "",
   });
+
+  const navigate = useNavigate();
 
   const handleRegister = (e) => {
     setUserData({ ...userData, [e.target.name]: e.target.value });
@@ -23,8 +27,21 @@ const Register = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    userDispatch({ type: "REGISTER", payload: {user: {...userData} } });
+    userDispatch({
+      type: "REGISTER",
+      payload: { user: { ...userData }, isLoggedIn: true },
+    });
   };
+
+  useEffect(() => {
+    const Checken = async () => {
+      const isAuth = await checkAuthStatus();
+      if (isAuth) {
+        navigate("/profile");
+      }
+    };
+    Checken();
+  }, []);
 
   return (
     <div className="">
@@ -66,8 +83,8 @@ const Register = () => {
           </label>
           <input
             type="text"
-            id="userName"
-            name="userName"
+            id="username"
+            name="username"
             required
             className={input}
             onChange={handleRegister}
