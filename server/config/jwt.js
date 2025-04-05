@@ -1,4 +1,5 @@
 import jwt from "jsonwebtoken";
+import { DateTime } from "luxon";
 
 export const createSendToken = (res, status, user) => {
   const { JWT_EXP, JWT_SECRET, COOKIE_EXP, NODE_ENV } = process.env;
@@ -7,7 +8,7 @@ export const createSendToken = (res, status, user) => {
   const isProduction = NODE_ENV === "production";
 
   const cookieOptions = {
-    expires: new Date(Date.now() + Number(COOKIE_EXP) * 24 * 60 * 60 * 1000),
+    expires: DateTime.utc().plus({ days: COOKIE_EXP }).toJSDate(),
     httpOnly: true,
     secure: true,
     sameSite: isProduction ? "None" : "Lax",

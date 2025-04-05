@@ -4,14 +4,11 @@ import User from "../models/userModel.js";
 const checkAuth = async (req, res, next) => {
   try {
     const token = req.cookies.Token;
-    console.log(token);
 
     if (!token) {
-      return res
-        .status(401)
-        .json({
-          message: "Nicht authentifiziert oder Benutzter nicht vorhanden",
-        });
+      return res.status(401).json({
+        message: "Nicht authentifiziert oder Benutzter nicht vorhanden",
+      });
     }
 
     const decode = jwt.verify(token, process.env.JWT_SECRET);
