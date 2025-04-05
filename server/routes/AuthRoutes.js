@@ -1,8 +1,8 @@
-import CheckAuth from "../middleware/auth";
+import e from "express";
+import { Authenfication } from "../controllers/authController.js";
 
+const router = e.Router();
 
-app.get("/api/auth", CheckAuth, (req, res) => {
-    console.log(`Auth verifiziert: ${req.user}`);
-    
-    res.status(200).json({ user: req.user });
-  });
+router.get("/check", Authenfication);
+
+export default router;
