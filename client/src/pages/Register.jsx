@@ -3,6 +3,7 @@ import { button } from "./Profile";
 import { MainContext } from "../../hooks/context/mainContext";
 import { useNavigate } from "react-router";
 import checkAuthStatus from "../helpers/AuthHelper";
+import axios from "../../src/api/axios.js";
 
 const label = "text-[1.2rem]";
 const input =
@@ -31,6 +32,12 @@ const Register = () => {
       type: "REGISTER",
       payload: { user: { ...userData }, isLoggedIn: true },
     });
+    try {
+      axios.post(`/users/signup`, userData);
+    } catch (error) {
+      throw new Error("Ein fehler ist beim registrieren passiert. anfrage konnte nicht gesendet werden.");
+      
+    }
   };
 
   useEffect(() => {
