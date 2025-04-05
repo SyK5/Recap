@@ -12,7 +12,6 @@ const checkAuth = async (req, res, next) => {
     }
 
     const decode = jwt.verify(token, process.env.JWT_SECRET);
-    console.log("✅ Token erfolgreich verifiziert:", decode);
 
     if (!decode) {
       return res
@@ -26,7 +25,6 @@ const checkAuth = async (req, res, next) => {
     }
 
     req.user = user;
-    console.log("✅ Benutzer gefunden:", user.userName);
     next();
   } catch (err) {
     console.error(
