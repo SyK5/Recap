@@ -15,7 +15,7 @@ const Register = () => {
   const [userData, setUserData] = useState({
     firstName: "",
     lastName: "",
-    userName: "",
+    username: "",
     email: "",
     password: "",
   });
@@ -26,17 +26,21 @@ const Register = () => {
     setUserData({ ...userData, [e.target.name]: e.target.value });
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    userDispatch({
-      type: "REGISTER",
-      payload: { user: { ...userData }, isLoggedIn: true },
-    });
+
     try {
-      axios.post(`/users/signup`, userData);
-    } catch (error) {
-      throw new Error("Ein fehler ist beim registrieren passiert. anfrage konnte nicht gesendet werden.");
-      
+      const res = await axios.post("/users/signup", userData);
+      const { password, ...savingData } = userData;
+      userDispatch({
+        type: "REGISTER",
+        payload: { user: savingData, isLoggedIn: true },
+      });
+      localStorage.setItem("isLoggedIn", true);
+      localStorage.setItem("user", JSON.stringify(savingData));
+      navigate("/profile");
+    } catch (err) {
+      console.error("❌ Registrierung fehlgeschlagen:", err);
     }
   };
 

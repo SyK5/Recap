@@ -1,25 +1,46 @@
-import React, { useContext, useEffect } from 'react'
-import { NavLink } from 'react-router';
-import { MainContext } from '../../hooks/context/mainContext';
+import React, { useContext, useEffect } from "react";
+import { NavLink, Outlet } from "react-router";
+import { MainContext } from "../../hooks/context/mainContext";
+import ProfileSidebar from "../components/ProfileSidebar";
 
-export const button = 'bg-blue-500 hover:bg-blue-700  text-white font-bold py-2 px-4 rounded-md';
+const container = 'w-[calc(100vw-172.484px)] fixed left-[172.484px] h-[calc(100vh-60px)] top-[60px] flex flex-col justify-center items-center rounded-l-3xl ';
+
+export const button =
+  "bg-blue-500 hover:bg-blue-700  text-white font-bold py-2 px-4 rounded-md";
 
 const Profile = () => {
-
   const [userState, userDispatch] = useContext(MainContext);
 
   useEffect(() => {
-    console.log('userState: ', userState);
-    
-  }, [])
+    const storedIsLoggedIn = localStorage.getItem("isLoggedIn");
+    const storedUser = JSON.parse(localStorage.getItem("user"));
+    if (storedIsLoggedIn && userState.isLoggedIn === false) {
+      userDispatch({
+        type: "LOGGED",
+        payload: { user: storedUser, isLoggedIn: storedIsLoggedIn },
+      });
+    }
+  }, []);
 
-  return (
-    <div className='flex gap-5'>
-    <NavLink to='/profile/register'><h2 className={button}>Register</h2></NavLink>
-    <h2 className={button}>Login</h2>
+  if (!userState.isLoggedIn) {
+    return (
+      <div className="flex gap-5">
+        <NavLink to="/profile/register">
+          <h2 className={button}>Register</h2>
+        </NavLink>
+        <h2 className={button}>Login</h2>
+      </div>
+    );
+  } else if (userState.isLoggedIn) {
+    return (
+      <div className="flex bg-gray-900 w-screen h-screen">
+        <ProfileSidebar />
+        <Outlet context={{container}} />
+      </div>
+    );
+  } else {
+    return <h1>kein if funktion</h1>;
+  }
+};
 
-    </div>
-  )
-}
-
-export default Profile
+export default Profile;

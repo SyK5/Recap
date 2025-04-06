@@ -25,22 +25,22 @@ const Topbar = () => {
     justify-center"
       >
         <li className={txtStyle}>
-          <NavLink to='/'>
+          <NavLink to="/">
             <IoHomeSharp />
           </NavLink>
         </li>
         <li className={txtStyle}>
-          <NavLink to='/search'>
+          <NavLink to="/search">
             <FaSearch />
           </NavLink>
         </li>
         <li className={`${txtStyle} text-4xl relative bottom-0.5`}>
-          <NavLink to='/profile'>
+          <NavLink to="/profile">
             <IoPersonCircle />
           </NavLink>
         </li>
         <li className={`${txtStyle} text-4xl relative bottom-0.5`}>
-          <NavLink to='/help'>
+          <NavLink to="/help">
             <MdHelp />
           </NavLink>
         </li>
