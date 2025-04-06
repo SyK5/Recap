@@ -2,7 +2,7 @@ import React from "react";
 import { NavLink } from "react-router";
 
 const bar =
-  "flex flex-col fixed left-0 top-[60px] h-[calc(100vh-60px)] p-5 justify-between gap-10 md:max-h-screen bg-gray-900 text-white";
+  "flex flex-col fixed left-0 top-[60px] h-[calc(100vh-60px)] p-5 justify-between gap-10 md:max-h-screen bg-darkSecondary text-white";
 
 const ProfileSidebar = () => {
   return (

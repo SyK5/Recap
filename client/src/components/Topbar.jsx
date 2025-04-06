@@ -16,7 +16,8 @@ const Topbar = () => {
     fixed
     top-0
     p-3
-    bg-darkMain"
+    bg-darkAccent
+    "
     >
       <ul
         className="

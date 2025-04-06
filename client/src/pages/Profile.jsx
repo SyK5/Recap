@@ -3,7 +3,8 @@ import { NavLink, Outlet } from "react-router";
 import { MainContext } from "../../hooks/context/mainContext";
 import ProfileSidebar from "../components/ProfileSidebar";
 
-const container = 'w-[calc(100vw-172.484px)] fixed left-[172.484px] h-[calc(100vh-60px)] top-[60px] flex flex-col justify-center items-center rounded-l-3xl ';
+const container =
+  "w-[calc(100vw-172.484px)] fixed left-[172.484px] h-[calc(100vh-60px)] top-[60px] flex flex-col text-white justify-center items-center rounded-tl-3xl bg-darkMain ";
 
 export const button =
   "bg-blue-500 hover:bg-blue-700  text-white font-bold py-2 px-4 rounded-md";
@@ -33,9 +34,9 @@ const Profile = () => {
     );
   } else if (userState.isLoggedIn) {
     return (
-      <div className="flex bg-darkMain w-screen h-screen">
+      <div className="flex bg-darkSecondary w-screen h-screen">
         <ProfileSidebar />
-        <Outlet context={{container}} />
+        <Outlet context={{ container }} />
       </div>
     );
   } else {
