@@ -33,7 +33,7 @@ const Profile = () => {
     );
   } else if (userState.isLoggedIn) {
     return (
-      <div className="flex bg-gray-900 w-screen h-screen">
+      <div className="flex bg-darkMain w-screen h-screen">
         <ProfileSidebar />
         <Outlet context={{container}} />
       </div>

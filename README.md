@@ -29,7 +29,6 @@ my-fullstack-project/
 │   │   ├── services/               # API-Aufrufe (Kommunikation mit Backend)
 │   │   ├── styles/                 # Die Styles für die Componente
 │   │   │   ├── app.css/            # App Styles
-│   │   │   ├── main.css/           # main Syles
 │   │   ├── App.jsx                 # Hauptkomponente
 │   │   ├── main.jsx                # Einstiegspunkt für React
 │   ├── .env                        # (optional) Umgebungsvariablen (z. B. API-URL)
